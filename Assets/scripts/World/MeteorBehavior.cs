@@ -21,7 +21,7 @@ public class MeteorBehavior : MonoBehaviour
     {
         if (Player != null)
         {
-            targetPos = (new Vector3(Player.transform.position.x, 0f, Player.transform.position.z) - transform.position).normalized;
+            targetPos = (new Vector3(Player.transform.position.x, Player.transform.position.y, Player.transform.position.z) - transform.position).normalized;
             Debug.Log("Meteor target Position : " + targetPos);
             rb.AddForce(targetPos * speed, ForceMode.Impulse);
         }
