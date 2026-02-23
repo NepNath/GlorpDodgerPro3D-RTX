@@ -1,0 +1,14 @@
+# GlorpDodgerPro3D-RTX
+
+## what is currently in the game ? :
+
+For now, only a verry early version of the game is available allowing the player to experience different difficulties, going from 1 (easiest) to 3 (hardest) to test the base gameplay loop.
+
+## what will come next ? 
+
+for the upcoming updates of the game, the following features will be added : 
+
+- [ ] post round upgrades
+- [ ] different projectiles types
+- [ ] infinite difficulty (upgradable by the player)
+- [ ] cosmetics
