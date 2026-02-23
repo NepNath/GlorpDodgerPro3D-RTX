@@ -77,7 +77,7 @@ public class Game : MonoBehaviour
         switch (GameSettings.difficultyIndex)
         {
             case 1:
-                timerUntilWin = 10f;
+                timerUntilWin = 60f;
                 projectileSpawnInterval = 2f;
                 break;
             case 2:

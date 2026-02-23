@@ -1455,7 +1455,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: -25
+  m_Spacing: -10
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -1481,7 +1481,7 @@ PrefabInstance:
       objectReference: {fileID: 1473634276}
     - target: {fileID: 6034245338552222069, guid: e4d696c4b7d704644bf514c865b31682, type: 3}
       propertyPath: HealthPoint
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6034245338552222069, guid: e4d696c4b7d704644bf514c865b31682, type: 3}
       propertyPath: deathScreen
