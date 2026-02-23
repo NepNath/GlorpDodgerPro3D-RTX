@@ -4,12 +4,16 @@ public class ProjectileSpawn : MonoBehaviour
 {
 
     [SerializeField] private GameObject spawnPrefab;
-    [SerializeField] private float minRadius;   
-    [SerializeField] private float maxRadius;   
+    [SerializeField] private float minRadius;
+    [SerializeField] private float maxRadius;
+
+    [SerializeField] private bool showSpawnRadius;
 
     [SerializeField] private float spawnInterval;
     private float timer;
-    void Update()
+
+
+    public void projectileSpawnTimer(float timer)
     {
         timer += Time.deltaTime;
         if (timer >= spawnInterval)
@@ -19,24 +23,33 @@ public class ProjectileSpawn : MonoBehaviour
         }
     }
 
-    void SpawnProjectile()
+
+    public void SpawnProjectile()
+    {
+        Instantiate(spawnPrefab, generateRandomSpawnPoint(), Quaternion.identity);
+    }
+
+
+    private Vector3 generateRandomSpawnPoint()
     {
         Vector2 randomDirection = Random.insideUnitCircle.normalized;
         float randomDistance = Random.Range(minRadius, maxRadius);
 
         Vector2 spawnPoint = randomDirection * randomDistance;
-
         Vector3 SpawnPosition = new Vector3(spawnPoint.x, 0f, spawnPoint.y) + transform.position;
-
-        Instantiate(spawnPrefab, SpawnPosition, Quaternion.identity);
+        return SpawnPosition;
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, minRadius);
+        if (showSpawnRadius)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, minRadius);
 
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, maxRadius);
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(transform.position, maxRadius);
+        }
+
     }
 }

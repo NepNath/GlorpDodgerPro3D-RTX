@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,14 +7,16 @@ using UnityEngine.SceneManagement;
 public class PlayerHealth : MonoBehaviour
 {
     
-    [SerializeField] private GameObject deathScreen;
-
     public int HealthPoint;
 
     [SerializeField] private HeartDisplay heartDisplayScript;
+    [SerializeField] private Game GameScript;
+
+ 
+
     private void Awake()
     {
-        deathScreen.SetActive(false);
+
         heartDisplayScript = FindFirstObjectByType<HeartDisplay>();
         if (heartDisplayScript != null)
         {
@@ -43,15 +46,8 @@ public class PlayerHealth : MonoBehaviour
     private void Die()
     {
         Debug.Log("glorp ded :(");
+        GameScript.isGlorpAlive = false;
         Destroy(gameObject);
-        StartCoroutine(ThrowbackToMainMenu(3));
-    }
-
-    IEnumerator ThrowbackToMainMenu(int seconds)
-    {
-        deathScreen.SetActive(true);
-        yield return new WaitForSecondsRealtime(seconds);
-        SceneManager.LoadScene(1);
     }
 
 }

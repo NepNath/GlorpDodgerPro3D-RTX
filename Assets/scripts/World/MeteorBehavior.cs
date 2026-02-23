@@ -28,7 +28,6 @@ public class MeteorBehavior : MonoBehaviour
         else
         {
             centralPos = (new Vector3(0f, 2, 0f) - transform.position).normalized;
-            Debug.Log("Player not found, Meteor target Position : " + centralPos);
             rb.AddForce(centralPos * speed, ForceMode.Impulse);
         }
 
