@@ -11,8 +11,9 @@ public class Game : MonoBehaviour
     public bool isGlorpAlive;
     public int difficultyIndex;
 
-    private float timerUntilWin;
-    private float timer;
+
+    [HideInInspector] public float timerUntilWin;
+    [HideInInspector] public float timer;
     private float projectileSpawnTimer;
     private float projectileSpawnInterval;
 
@@ -28,6 +29,7 @@ public class Game : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1f;
         isGlorpAlive = true;
         deathScreen.SetActive(false);
         winScreen.SetActive(false);
