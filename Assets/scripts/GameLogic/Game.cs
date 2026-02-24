@@ -24,8 +24,19 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject winScreen;
 
     [Header("Scenes")]
-    [SerializeField] private SceneAsset mainMenuScene;
+    [SerializeField] private string mainMenuSceneName;
     public ProjectileSpawn ProjectileSpawn;
+
+    #if UNITY_EDITOR
+    [SerializeField] private SceneAsset mainMenuScene;
+
+    private void OnValidate()
+    {
+        if (mainMenuScene != null)
+            mainMenuSceneName = mainMenuScene.name;
+    }
+    #endif
+
 
     private void Awake()
     {
@@ -35,6 +46,12 @@ public class Game : MonoBehaviour
         winScreen.SetActive(false);
         difficultySetter();
         Debug.Log("Difficulty Index : " + GameSettings.difficultyIndex);
+        if (GameSettings.difficultyIndex == 0)
+        {
+            GameSettings.difficultyIndex = 1;
+            Debug.Log("Difficulty Index not set, selecting easiest difficulty : " + GameSettings.difficultyIndex);
+
+        }
     }
 
     void FixedUpdate()
@@ -66,7 +83,7 @@ public class Game : MonoBehaviour
     IEnumerator ThrowbackToMainMenu(int seconds)
     {
         yield return new WaitForSecondsRealtime(seconds);
-        SceneManager.LoadScene(mainMenuScene.name);
+        SceneManager.LoadScene(mainMenuSceneName);
     }
 
     //private void StartGame()
@@ -86,7 +103,7 @@ public class Game : MonoBehaviour
                 timerUntilWin = 120f;
                 projectileSpawnInterval = 1f;
 
-                break; 
+                break;
             case 3:
                 timerUntilWin = 180f;
                 projectileSpawnInterval = .5f;

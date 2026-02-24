@@ -8,7 +8,7 @@ public class TimerScript : MonoBehaviour
 
     private void Awake()
     {
-        game = FindObjectOfType<Game>();
+        game = FindFirstObjectByType<Game>();
     }
 
     void Update()
