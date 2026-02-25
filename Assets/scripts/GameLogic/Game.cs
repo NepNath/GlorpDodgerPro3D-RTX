@@ -23,17 +23,25 @@ public class Game : MonoBehaviour
     [SerializeField] private GameObject deathScreen;
     [SerializeField] private GameObject winScreen;
 
-    [Header("Scenes")]
-    [SerializeField] private string mainMenuSceneName;
+    
+    private string mainMenuSceneName;
+    private string upgradeSceneName;
+
     public ProjectileSpawn ProjectileSpawn;
 
+
+
     #if UNITY_EDITOR
+    [Header("Scenes")]
     [SerializeField] private SceneAsset mainMenuScene;
+    [SerializeField] private SceneAsset upgradeScene;
 
     private void OnValidate()
     {
         if (mainMenuScene != null)
             mainMenuSceneName = mainMenuScene.name;
+        if (upgradeScene != null)
+            upgradeSceneName = upgradeScene.name;
     }
     #endif
 
@@ -61,7 +69,7 @@ public class Game : MonoBehaviour
 
         {
             winScreen.SetActive(true);
-            StartCoroutine(ThrowbackToMainMenu(3));
+            StartCoroutine(sendToUpgradeScene(3));
             Time.timeScale = 0f;
         }
 
@@ -84,6 +92,11 @@ public class Game : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(seconds);
         SceneManager.LoadScene(mainMenuSceneName);
+    }
+    IEnumerator sendToUpgradeScene(int seconds)
+    {
+        yield return new WaitForSecondsRealtime(seconds);
+        SceneManager.LoadScene(upgradeSceneName);
     }
 
     //private void StartGame()

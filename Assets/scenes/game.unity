@@ -1251,8 +1251,9 @@ MonoBehaviour:
   timer: 0
   deathScreen: {fileID: 1835148001}
   winScreen: {fileID: 527682215}
-  mainMenuScene: {fileID: 102900000, guid: 6b29197eb92f6d2499d6913761d705a9, type: 3}
   ProjectileSpawn: {fileID: 125637750}
+  mainMenuScene: {fileID: 102900000, guid: 6b29197eb92f6d2499d6913761d705a9, type: 3}
+  upgradeScene: {fileID: 102900000, guid: 2929723298db9c74091e1f66c32bc369, type: 3}
 --- !u!4 &1473634277
 Transform:
   m_ObjectHideFlags: 0
