@@ -12,3 +12,8 @@ for the upcoming updates of the game, the following features will be added :
 - [ ] different projectiles types
 - [ ] infinite difficulty (upgradable by the player)
 - [ ] cosmetics
+
+
+### Notes for NepNath : 
+
+don't forget to move most of game.cs elements to avoid unexisting references in useless cases (cf: death & win screen in the upgrade scene that are not present)
