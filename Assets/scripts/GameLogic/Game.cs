@@ -48,10 +48,17 @@ public class Game : MonoBehaviour
 
     private void Awake()
     {
+        if (deathScreen)
+        {
+            deathScreen.SetActive(false);
+        }
+        if (winScreen)
+        {
+            winScreen.SetActive(false);
+        }
+
         Time.timeScale = 1f;
         isGlorpAlive = true;
-        deathScreen.SetActive(false);
-        winScreen.SetActive(false);
         difficultySetter();
         Debug.Log("Difficulty Index : " + GameSettings.difficultyIndex);
         if (GameSettings.difficultyIndex == 0)
@@ -66,22 +73,27 @@ public class Game : MonoBehaviour
     {
         timer += Time.deltaTime;
         if (timer >= timerUntilWin)
-
         {
-            winScreen.SetActive(true);
+            if (winScreen) 
+            {
+                winScreen.SetActive(true);
+            }
             StartCoroutine(sendToUpgradeScene(3));
             Time.timeScale = 0f;
         }
 
         if (!isGlorpAlive)
         {
-            deathScreen.SetActive(true);
+            if (deathScreen)
+            {
+                deathScreen.SetActive(true);
+            }
             StartCoroutine(ThrowbackToMainMenu(3));
         }
 
 
         projectileSpawnTimer += Time.deltaTime;
-        if (projectileSpawnTimer >= projectileSpawnInterval)
+        if (projectileSpawnTimer >= projectileSpawnInterval && ProjectileSpawn)
         {
             ProjectileSpawn.SpawnProjectile();
             projectileSpawnTimer = 0f;
@@ -91,12 +103,18 @@ public class Game : MonoBehaviour
     IEnumerator ThrowbackToMainMenu(int seconds)
     {
         yield return new WaitForSecondsRealtime(seconds);
-        SceneManager.LoadScene(mainMenuSceneName);
+        if(mainMenuScene)
+        {
+            SceneManager.LoadScene(mainMenuSceneName);
+        }
     }
     IEnumerator sendToUpgradeScene(int seconds)
     {
         yield return new WaitForSecondsRealtime(seconds);
-        SceneManager.LoadScene(upgradeSceneName);
+        if(upgradeScene)
+        {
+            SceneManager.LoadScene(upgradeSceneName);
+        }
     }
 
     //private void StartGame()

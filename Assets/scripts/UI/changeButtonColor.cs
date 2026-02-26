@@ -4,13 +4,10 @@ using UnityEngine.UI;
 public class changeButtonColor : MonoBehaviour
 {
     private Button Button;
-    private ColorBlock colors;
-
 
     private void Awake()
     {
         Button = GetComponent<Button>();
-        colors = Button.colors;
     }
 
     private void Update()
@@ -18,13 +15,22 @@ public class changeButtonColor : MonoBehaviour
         switch (GameSettings.difficultyIndex)
         {
             case 1:
-                //vert
+                Button.image.color = new Color( 109f / 255f,    //R
+                                                255f / 255f,    //G
+                                                78f / 255f,     //B
+                                                255f / 255f );  //A
                 break;
             case 2:
-                //orange
+                Button.image.color = new Color( 255f / 255f,    //R
+                                                181f / 255f,    //G
+                                                0f / 255f,      //B
+                                                255f / 255f );  //A
                 break;
             case 3:
-                //rouge
+                Button.image.color = new Color( 255f / 255f,    //R
+                                                18f / 255f,     //G
+                                                18f / 255f,     //B
+                                                255f / 255f );  //A
                 break;
         }
     }
