@@ -10,41 +10,19 @@ public class Game : MonoBehaviour
     public int timeSurvived;
     public bool isGlorpAlive;
     public int difficultyIndex;
-
+    private int roundAward;
+    private bool roundEnded = false;
 
     [HideInInspector] public float timerUntilWin;
     [HideInInspector] public float timer;
     private float projectileSpawnTimer;
     private float projectileSpawnInterval;
 
-
-
     [Header("Win/Death canvas")]
     [SerializeField] private GameObject deathScreen;
     [SerializeField] private GameObject winScreen;
 
-    
-    private string mainMenuSceneName;
-    private string upgradeSceneName;
-
     public ProjectileSpawn ProjectileSpawn;
-
-
-
-    #if UNITY_EDITOR
-    [Header("Scenes")]
-    [SerializeField] private SceneAsset mainMenuScene;
-    [SerializeField] private SceneAsset upgradeScene;
-
-    private void OnValidate()
-    {
-        if (mainMenuScene != null)
-            mainMenuSceneName = mainMenuScene.name;
-        if (upgradeScene != null)
-            upgradeSceneName = upgradeScene.name;
-    }
-    #endif
-
 
     private void Awake()
     {
@@ -72,12 +50,14 @@ public class Game : MonoBehaviour
     void FixedUpdate()
     {
         timer += Time.deltaTime;
-        if (timer >= timerUntilWin)
+        if (timer >= timerUntilWin && !GameSettings.roundEnded)
         {
+            GameSettings.roundEnded = true;
             if (winScreen) 
             {
                 winScreen.SetActive(true);
             }
+            GameSettings.playerScore += roundAward;
             StartCoroutine(sendToUpgradeScene(3));
             Time.timeScale = 0f;
         }
@@ -103,41 +83,38 @@ public class Game : MonoBehaviour
     IEnumerator ThrowbackToMainMenu(int seconds)
     {
         yield return new WaitForSecondsRealtime(seconds);
-        if(mainMenuScene)
-        {
-            SceneManager.LoadScene(mainMenuSceneName);
-        }
+        SceneLoader.LoadMainMenuScene();
     }
     IEnumerator sendToUpgradeScene(int seconds)
     {
         yield return new WaitForSecondsRealtime(seconds);
-        if(upgradeScene)
-        {
-            SceneManager.LoadScene(upgradeSceneName);
-        }
+        SceneLoader.LoadUpgradeScene();
     }
-
-    //private void StartGame()
-    //{
-
-    //}
 
     private void difficultySetter()
     {
         switch (GameSettings.difficultyIndex)
         {
+            case -1:
+                timerUntilWin = 5f;
+                projectileSpawnInterval = 10000f;
+                roundAward = 500;
+                break;
             case 1:
                 timerUntilWin = 60f;
                 projectileSpawnInterval = 2f;
+                roundAward = 100;
                 break;
             case 2:
                 timerUntilWin = 120f;
                 projectileSpawnInterval = 1f;
+                roundAward = 250;
 
                 break;
             case 3:
                 timerUntilWin = 180f;
                 projectileSpawnInterval = .5f;
+                roundAward = 500;
 
                 break;
         }

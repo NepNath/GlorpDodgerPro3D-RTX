@@ -2,38 +2,33 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    
-    public int HealthPoint;
 
     [SerializeField] private HeartDisplay heartDisplayScript;
     [SerializeField] private Game GameScript;
 
- 
-
     private void Awake()
     {
-
         heartDisplayScript = FindFirstObjectByType<HeartDisplay>();
         if (heartDisplayScript != null)
         {
-            heartDisplayScript.UpdateHeartsUI(HealthPoint);
+            heartDisplayScript.UpdateHeartsUI(GameSettings.playerHealth);
         }
     }
     public void TakeDamage(int damage)
     {
-        if (HealthPoint > 0)
+        if (GameSettings.playerHealth > 0)
         {
-            HealthPoint -= damage;
+            GameSettings.playerHealth -= damage;
             if (heartDisplayScript != null)
             {
-                heartDisplayScript.UpdateHeartsUI(HealthPoint);
+                heartDisplayScript.UpdateHeartsUI(GameSettings.playerHealth);
             }
         }
-        if (HealthPoint <= 0)
+        if (GameSettings.playerHealth <= 0)
         {
             if (heartDisplayScript != null)
             {
-                heartDisplayScript.UpdateHeartsUI(HealthPoint);
+                heartDisplayScript.UpdateHeartsUI(GameSettings.playerHealth);
             }
             Die();
         }
@@ -44,6 +39,15 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log("glorp ded :(");
         GameScript.isGlorpAlive = false;
         Destroy(gameObject);
+    }
+
+    public static void addHealth(int health)
+    {
+        if (GameSettings.playerScore >= 100)
+        {
+            GameSettings.playerScore -= 100;
+            GameSettings.playerHealth += 1;
+        }
     }
 
 }

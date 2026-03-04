@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using TMPro.Examples;
 
-public class parseScore : MonoBehaviour
+public class parseHealth : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI uiText;
 
@@ -15,10 +15,10 @@ public class parseScore : MonoBehaviour
     {
         if (uiText)
         {
-            uiText.text = "Available points : " + GameSettings.playerScore.ToString();
+            uiText.text = "Current hearths amount : " + GameSettings.playerHealth.ToString();
         } else
         {
-            Debug.LogError(" Error : no score text found");
+            Debug.LogError(" Error : no health text found");
         }
     }
 }
