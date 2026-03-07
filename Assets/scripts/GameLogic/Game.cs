@@ -53,9 +53,11 @@ public class Game : MonoBehaviour
         if (timer >= timerUntilWin && !GameSettings.roundEnded)
         {
             GameSettings.roundEnded = true;
+
             if (winScreen) 
             {
                 winScreen.SetActive(true);
+                GameSettings.roundsSurvived += 1;
             }
             GameSettings.playerScore += roundAward;
             StartCoroutine(sendToUpgradeScene(3));
