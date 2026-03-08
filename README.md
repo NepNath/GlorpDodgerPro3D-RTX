@@ -49,13 +49,10 @@ GlorpDodgerPro3D - RTX is a 3D dodge game where you play as Glorp, a character w
 
 ## Roadmap
 
-- [ ] Balanced and final difficulty values
-- [ ] More enemy/projectile types
-- [ ] More upgrade options
-- [ ] Sound design and music
-- [ ] Visual polish and particle effects
-- [ ] Options menu (volume, keybinds)
-- [ ] Stable v1.0 release
+- [ ] 0.3.0 - more projectiles depending on the difficulty & infinite difficulty
+- [ ] 0.4.0 - Sound design
+- [ ] 0.5.0 - More glorp upgrades & perks 
+- [ ] 0.6.0 - glorp Customization
 
 ---
 
