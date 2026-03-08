@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class ProjectileSpawn : MonoBehaviour
 {
-
-    [SerializeField] private GameObject spawnPrefab;
+    [SerializeField] private GameObject[] projectileList;
     [SerializeField] private float minRadius;
     [SerializeField] private float maxRadius;
 
@@ -26,7 +25,8 @@ public class ProjectileSpawn : MonoBehaviour
 
     public void SpawnProjectile()
     {
-        Instantiate(spawnPrefab, generateRandomSpawnPoint(), Quaternion.identity);
+        int randomProjectile = Random.Range(0, GameSettings.difficultyIndex);
+        Instantiate(projectileList[randomProjectile], generateRandomSpawnPoint(), Quaternion.identity);
     }
 
 

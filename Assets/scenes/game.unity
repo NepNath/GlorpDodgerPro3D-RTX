@@ -148,7 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c773bb6087222a24c8daae090585d36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileSpawn
-  spawnPrefab: {fileID: 5914170748074520188, guid: cfe6f50a0585f8846a0a88b23c47673b, type: 3}
+  projectileList:
+  - {fileID: 5914170748074520188, guid: cfe6f50a0585f8846a0a88b23c47673b, type: 3}
   minRadius: 20
   maxRadius: 50
   showSpawnRadius: 1
@@ -1397,13 +1398,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823688464}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
+  m_LocalRotation: {x: 0.22503407, y: -0, z: -0, w: 0.9743509}
   m_LocalPosition: {x: 0, y: 32.4, z: -31.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 26.01, y: 0, z: 0}
 --- !u!114 &1823688468
 MonoBehaviour:
   m_ObjectHideFlags: 0
