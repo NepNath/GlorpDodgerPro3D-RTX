@@ -1,5 +1,7 @@
 # GlorpDodgerPro3D - RTX
 
+[![Download](https://img.shields.io/badge/Download-brightgreen)](https://github.com/NepNath/GlorpDodgerPro3D-RTX/releases/download/beta/0.2.6-win.zip)
+
 > **Alpha v0.2.6** — Work in progress
 
 GlorpDodgerPro3D - RTX is a 3D dodge game where you play as Glorp, a character who must survive as long as possible against an endless wave of incoming meteors. The longer you survive, the harder it gets.
