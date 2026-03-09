@@ -1,6 +1,6 @@
 # GlorpDodgerPro3D - RTX
 
-[![Download](https://img.shields.io/badge/Download-brightgreen)](https://github.com/NepNath/GlorpDodgerPro3D-RTX/releases/download/beta/0.2.6-win.zip)
+[![Download](https://img.shields.io/badge/Download-brightgreen)](https://github.com/NepNath/GlorpDodgerPro3D-RTX/releases/download/beta/0.2.6-win.zip) [![Itch.io](https://img.shields.io/badge/Itch.io-orange)](https://nepnath.itch.io/glorpdodgerpro3d-rtx)
 
 > **Alpha v0.2.6** — Work in progress
 
